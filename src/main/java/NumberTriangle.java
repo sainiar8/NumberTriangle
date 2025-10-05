@@ -91,8 +91,20 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        // TODO implement this method
-        return -1;
+        NumberTriangle currentNode = this;
+        // Iterate through each character in the path string to navigate the triangle.
+        for (int i = 0; i < path.length(); i++) {
+            char direction = path.charAt(i);
+            // Move to the left child if the character is 'l'.
+            if (direction == 'l') {
+                currentNode = currentNode.left;
+                // Move to the right child if the character is 'r'.
+            } else if (direction == 'r') {
+                currentNode = currentNode.right;
+            }
+        }
+        // Return the root value of the final node.
+        return currentNode.getRoot();
     }
 
     /** Read in the NumberTriangle structure from a file.
